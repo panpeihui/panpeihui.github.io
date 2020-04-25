@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">用户权限 | 還差半步</title>
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "あと93❤半歩";
+  mashiro_option.author_name = "半歩";
+  mashiro_option.site_url = "";
+  mashiro_option.v_appId = "yhbqo3WQVL8v8idfcIiafFxV-gzGzoHsz";
+  mashiro_option.v_appKey = "db39sRhT25DFDAitHOFWIAiq";
+  mashiro_option.mathjax = "0";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+  var bg = "https://cdn.jsdelivr.net/gh/panpeihui/cdn@1.5/img/cover/xiaoma.jpg,https://cdn.jsdelivr.net/gh/panpeihui/cdn@1.5/img/cover/music.jpg".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('朋友，IE浏览器未适配哦~');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  </style>
+<!-- 1. Add latest jQuery and fancybox files -->
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+</head>
+</html>
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dot">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href>
+          <img src="https://cdn.jsdelivr.net/gh/panpeihui/cdn@1.5/img/cover/touxiang.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>人生没有所谓的彩排  每天都是现场直播</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/panpeihui/cdn@1.2/img/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="http://github.com/" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/panpeihui/cdn@1.5/img/social/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://music.163.com/" target="_blank" class="social-github" title="wangyiyun">
+                    <img src="https://cdn.jsdelivr.net/gh/panpeihui/cdn@1.5/img/social/wangyiyun.png">
+                  </a>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/panpeihui/cdn@1.2/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style>
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name src width="auto" preload="auto">
+    </video>
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <!i class="fa fa-chevron-down" aria-hidden="true">
+      
+    </span>
+  </div>
+
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">あと93❤</span>
+            <span class="shironeko">半歩</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/bangumi/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          番组
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/shijianzhou/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list faa-tada" aria-hidden="true"></i>
+                    时间轴
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="https://panpeihui.github.io/photos/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-photo" aria-hidden="true"></i>
+                    3D图片
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/about/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/panpeihui/cdn@1.6/img/cover/12.jpg);" src="https://cdn.jsdelivr.net/gh/panpeihui/cdn@1.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/panpeihui/cdn@1.6/img/cover/12.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      用户权限</h1>
+      <p class="entry-census">
+        <span>
+          <a href>
+            <img src="https://cdn.jsdelivr.net/gh/panpeihui/cdn@v1.6/img/custom/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href>pan</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2019-7-6<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h3 id="etc-skel"><a href="#etc-skel" class="headerlink" title="/etc/skel"></a>/etc/skel</h3><p>/etc/skel目录  用来存放新用户环境变量</p>
+<p>新用户创建后  新用户家目录就会自动复制 cp  -a  /etc/skel/*  /home/xinyonghu </p>
+<p>Vi /etc/skel/-bash_porfile 文件定义环境变量  新用户创建也会同步改环境变量</p>
+<h4 id="etc-skel-的企业场景作用"><a href="#etc-skel-的企业场景作用" class="headerlink" title="/etc/skel 的企业场景作用"></a>/etc/skel 的企业场景作用</h4><p>1.可以把通知的内容放到skel ，让登录的人去看<br>2.统一初始化新用户环境变量<br>3.面试题：系统出现 –bash-4.1$ 问题原因及解决方法<br>原因：用户家目录环境变量没了<br>解决方法：<br>在该用户下：cp –a /etc/skel/.bash* .     最后的 . 表示复制到当前目录</p>
+<h3 id="useradd"><a href="#useradd" class="headerlink" title="useradd"></a>useradd</h3><p>/etc/dfault/useradd 添加用户是需要调用的一个默认配置文件</p>
+<pre><code class="sh">Passwd –n 7 –x 60 –w 10 –i 30 oldboy
+Chage  –l oldboy
+Chage –m 7 –M 60 –W 10 –I 30 oldboy 一样的
+Chage –E “2019/06/07” oldboy
+Last password change                                    : Apr 29, 2019
+Password expires                                        : Jun 28, 2019
+Password inactive                                       : Jul 28, 2019
+Account expires                                         : never
+Minimum number of days between password change          : 7
+Maximum number of days between password change          : 60
+Number of days of warning before password expires       : 10
+</code></pre>
+<h3 id="Userdel"><a href="#Userdel" class="headerlink" title="Userdel"></a>Userdel</h3><p> Userdel – r 删除家目录<br>企业场景处理方法：<br>一般不能确认用户相关目录有木有重要数据就不能用 –r<br>删除经验：<br>1，vi /etc/passwd ，然后注释掉用户，观察1个月，这样出问题可以还原，相当于操作前备份<br>2，把登录shell 改成 /sbin/nologin<br>3，openldap （类似活动目录）账号统一管理的，ldap库里干掉用户，所有服务器全部都没了<br>提示：只要修改和删除都要小心谨慎</p>
+<h3 id="用户属性"><a href="#用户属性" class="headerlink" title="用户属性"></a>用户属性</h3><p>useradd oldboy -e 01/28/12<br>useradd -D -e 01/19/12 #→修改默认情况新建帐户过期时间,设置后，新用户都会在这个时间后过期。<br>useradd -D|grep EXPIR #→修改已成效。<br>EXPIRE=01/19/12<br>useradd -D -e “”   #→测试完毕还原<br> useradd –D<br>特别提示：这里仅是更改了配置文件的默认值，仅对之后建立的新用户生效，和老用户无关。<br>更改用户时：<br>法二：修改账户属性<br>usermod -e 01/28/12 oldboy<br>法三：调整账户过期<br>chage -E 01/28/12 oldboy</p>
+<h3 id="用户登录信息"><a href="#用户登录信息" class="headerlink" title="用户登录信息"></a>用户登录信息</h3><p>W  who  whomi  last  lastlog   umask </p>
+<p>Su – 切换用户身份   -c 指定用户身份执行任务   su – oldboy –c ‘  pwd  ’</p>
+<h3 id="创建用户脚本"><a href="#创建用户脚本" class="headerlink" title="创建用户脚本"></a>创建用户脚本</h3><pre><code class="bash">echo stu{1..10}|xargs -n1 |sed &#39;s#.*#useradd &amp; \&amp;\&amp; echo $RANDOM|md5sum|cut -c 1-8 &gt;&gt;/tmp/mima.txt \&amp;\echo &#39;tail -1 /tmp/nima.txt&#39;|passwd --stdin &amp;#gp&#39;|bash
+</code></pre>
+<h3 id="visudo"><a href="#visudo" class="headerlink" title="visudo"></a>visudo</h3><p>Sudo可以让普通用户拥有root权限去执行命令<br>Sudo –l<br>Visudo  可以对 : /etc/sudoers文件进行修改</p>
+<pre><code class="bash"># Allow root to run any commands anywhere
+root    ALL=(ALL)       ALL
+dc2-user ALL=(ALL) NOPASSWD: ALL
+</code></pre>
+<h4 id="检查语法"><a href="#检查语法" class="headerlink" title="检查语法"></a>检查语法</h4><p>visudo –c</p>
+<p>Linux系统安全最小原则<br>1.安装Linux系统最小化，即yum安装包最小化，无用的包不装<br>2.开机自启动服务最小化<br>3.操作命令最小化，例如：能用 rm -f  就不用 rm -fr<br>4.登陆Linux用户最小化，平时没有特殊需要不登陆root 用普通用户<br>5.用户权限最小化，只给用户必须的管理系统的命令，不能啥都可以干<br>6.Linux系统文件及目录的权限设置最小化，禁止随意创建，更改，删除文件 </p>
+<h4 id="工作需求"><a href="#工作需求" class="headerlink" title="工作需求"></a>工作需求</h4><pre><code>开发人员：User_Alias KAIFA_ADMINS = kaifa01, kaifa02
+      命令权限: KAIFACMD
+      身份权限: OP1
+运维人员: User_Alias OLD_ADMINS = oldboy, oldboy1,%sa
+      命令权限: USERCMD, DISKCMD, NETMAGCMD, CTRLCMD
+      身份权限:OP1
+网络工程师: User_Alias OLD_NETADMINS = leo, maya
+      命令权限:NETMAGCMD
+      身份权限:OP2
+</code></pre><pre><code class="bash">#用户别名分类:
+
+User_Alias User_Alias KAIFA_ADMINS = kaifa01, kaifa02
+User_Alias OLD_ADMINS = oldboy, oldboy1,%sa
+User_Alias OLD_NETADMINS = leo, maya
+
+#岗位命令分类别名:
+
+Cmnd_Alias  USERCMD = /usr/sbin/useradd, /usr/sbin/userdel,\  \换行
+/usr/bin/passwd [A-Za-z]*, /bin/chown, /bin/chmod
+Cmnd_Alias  DISKCMD = /sbin/fdisk, /bin/parted
+Cmnd_Alias  NETMAGCMD = /sbin/ifconfig, /etc/init.d/network
+Cmnd_Alias  CTRLCMD = /usr/sbin/reboot, /usr/sbin/halt
+Cmnd_Alias  KAIFACMD = /bin/grep, /usr/bin/tail, /bin/cat
+
+#角色 
+Runas_Alias OP1 = root, oldboy
+Runas_Alias OP2 = rott, oldgirl
+
+#授权:
+#root      ALL=(ALL)      ALL
+#用户     机器  角色      命令
+KAIFA_ADMINS   ALL=(OP1)  KAIFACMD
+OLD_ADMINS     ALL=(OP1)  USERCMD, DISKCMD, NETMAGCMD, CTRLCMD
+OLD_NETADMINS  ALL=(OP2)  NETMAGCMD
+</code></pre>
+<h4 id="生产环境企业日志审计"><a href="#生产环境企业日志审计" class="headerlink" title="生产环境企业日志审计"></a>生产环境企业日志审计</h4><p>解决方案：<br>  sudo 配合 rsyslog 进行审计<br>  yum install sudo syslog -y<br>  echo “Defaults    logflie=/var/log/sudo.log” &gt;&gt;/etc/sudoers<br>  一行搞定sudo 审计</p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏<div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/panpeihui/cdn@1.5/img/custom/avatar.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/panpeihui/cdn@1.5/img/custom/avatar.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!--<div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>-->
+        <!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2019/07/06/OSI-7层/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/panpeihui/cdn@1.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/panpeihui/cdn@1.6/img/cover/07.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                OSI</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2019/07/02/cobbler/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/panpeihui/cdn@1.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/panpeihui/cdn@1.6/img/cover/01.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                cobbler</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "yhbqo3WQVL8v8idfcIiafFxV-gzGzoHsz",
+        appKey: "db39sRhT25DFDAitHOFWIAiq",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <a href class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/panpeihui/cdn@v1.6/img/custom/avatar.jpg" itemprop="image" alt="pan" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href itemprop="url" rel="author">pan</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>最美的不是下雨天，而是我与你一起躲过雨的屋檐</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
+    </div>    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!--<footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 pan<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>-->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/panpeihui/cdn@1.2/img/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/panpeihui/cdn@1.2/img/other/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy 2019</p>
+    </div>
+<!--    <div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #733a3a;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank" style="color: #f5f5f5;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" target="_blank" style="color: #f5f5f5;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a href="https://www.hojun.cn/" target="_blank" style="color: #f5f5f5;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun</a>, Powered by Hexo, Hosted by Coding Pages</a>
+        </span>
+      </p>
+</span>
+</div>-->
+    </div>
+  <!-- .site-info -->
+<div style="text-align:center;">
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("06/14/2019 00:00:00");//在此处修改你的建站时间
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = " 本博客已于第 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + "秒 倒闭";
+    }
+  setInterval("createtime()",250);
+</script>
+<div style="text-align:center;">
+      <div class="github-badge">
+        <a rel="license" href="https://hexo.io/" target="_blank" title="由Hexo强力驱动">
+        <span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a>
+      </div>
+      <div class="github-badge">
+        <a rel="license" href="https://github.io/" target="_blank" title="静态网页托管于Github">
+        <span class="badge-subject">Hosted</span><span class="badge-value bg-brightgreen">Github</span></a>
+      </div>
+      <div class="github-badge">
+          <a rel="license" href="https://sm.ms/" target="_blank" title="SM.MS提供图床服务">
+          <span class="badge-subject">PictureBed</span><span class="badge-value bg-blueviolet">Github&SM</span></a>
+      </div>
+      <div class="github-badge">
+          <a rel="license" href="https://github.com/honjun/hexo-theme-sakura/" target="_blank" title="站点使用 Sakura 主题，作者：Mashiro & Hojun">
+          <span class="badge-subject">Theme</span><span class="badge-value bg-blue">Sakura</span></a>
+      </div>
+      <div class="github-badge">
+          <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="本站点采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议进行许可">
+          <span class="badge-subject"><i class="fa fa-copyright"></i></span><span class="badge-value bg-lightgrey">BY-NC-SA 4.0</span></a>
+      </div>
+      <div class="github-badge">
+        <span class="badge-subject">UV</span><span class="badge-value bg-orange" id="busuanzi_value_site_uv"></span>
+      </div>
+      <div class="github-badge">
+        <span class="badge-subject">PV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_pv"></span>
+      </div><br><br>
+
+<style>
+.github-badge {
+display: inline-block;
+border-radius: 4px;
+text-shadow: none;
+font-size: 12px;
+color: #fff;
+line-height: 12px;
+background-color: #ABBAC3;
+margin-bottom: 5px;
+}
+.github-badge .badge-subject {
+  display: inline-block;
+  background-color: #4D4D4D;
+  padding: 4px 4px 4px 6px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  color:#fff;
+}
+.github-badge .badge-value {
+  display: inline-block;
+  padding: 4px 6px 4px 4px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  color:#fff;
+}
+.github-badge .bg-brightgreen {
+  background-color: #4DC820 !important;
+}
+.github-badge .bg-orange {
+  background-color: #FFA500 !important;
+}
+.github-badge .bg-yellow {
+  background-color: #D8B024 !important;
+}
+.github-badge .bg-blueviolet {
+  background-color: #8833D7 !important;
+}
+.github-badge .bg-pink {
+  background-color: #F26BAE !important;
+}
+.github-badge .bg-red {
+  background-color: #e05d44 !important;
+}
+.github-badge .bg-blue {
+  background-color: #007EC6 !important;
+}
+.github-badge .bg-lightgrey {
+  background-color: #9F9F9F !important;
+}
+.github-badge .bg-grey,
+.github-badge .bg-gray {
+  background-color: #555 !important;
+}
+.github-badge .bg-lightgrey,
+.github-badge .bg-lightgray {
+  background-color: #9f9f9f !important;
+}
+</style>
+</div>
+</div></footer>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script type="text/javascript" src="/js/Valine.min.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+/* <![CDATA[ */
+if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+} else {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+}
+/* ]]> */
+
+</script>
+<script>
+$(document).ready(function() {
+  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+    if ($(".pattern-center").length > 0) { //有图的情况
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+      });
+    } else {
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+      });
+    }
+    var offsetTop = $('.toc').offset().top - 95;
+    window.onscroll = function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= offsetTop) {
+        $('.toc').addClass('toc-fixed');
+      } else {
+        $('.toc').removeClass('toc-fixed');
+      }
+    }
+  }
+});
+</script>
+<script src="/live2d-widget/autoload.js"></script>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/love.js"></script>
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <div id="mo-nav" class>
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/panpeihui/cdn@1.5/img/cover/touxiang.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">あと93❤半歩</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="http://github.com/" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+        <a href="http://weibo.com/mashirozx?is_all=1" class="fa fa-weibo" target="_blank" style="color: #dd4b39; margin-left:20px"></a>
+      
+        <a href="https://wpa.qq.com/msgrd?v=3&uin=954655431&site=qq&menu=yes" class="fa fa-qq" target="_blank" style="color: #25c6fe; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/bangumi/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  番组
+                </a>
+              </li>
+            
+              <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  歌单
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/shijianzhou/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list faa-tada" aria-hidden="true"></i>
+            时间轴
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="https://panpeihui.github.io/photos/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-photo" aria-hidden="true"></i>
+            3D图片
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/links/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+            友人帐
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/about/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+            关于
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<div class="aplayer" data-id="2879787433" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="false" data-loop="all" data-order="random" data-preload="auto" data-volume="0.7" data-mutex="true" < div>
+<script src="https://cdn.jsdelivr.net/npm/meting@1.2/dist/Meting.min.js"></script>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script></div>
+  <div class="bg_content">
+    <canvas id="canvas"></canvas>
+</div>
+<!--网页预加载-->
+<script src="https://cdn.jsdelivr.net/gh/panpeihui/cdn@1.2/js/instantclick-1.2.2.js" type="module"></script>
+<!--浏览器搞笑标题-->
+<script type="text/javascript" src="\js\FunnyTitle.js"></script>
+</body>
+</html>

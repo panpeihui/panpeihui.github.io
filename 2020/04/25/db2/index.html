@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">db2安装 | 還差半步</title>
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "あと93❤半歩";
+  mashiro_option.author_name = "半歩";
+  mashiro_option.site_url = "";
+  mashiro_option.v_appId = "yhbqo3WQVL8v8idfcIiafFxV-gzGzoHsz";
+  mashiro_option.v_appKey = "db39sRhT25DFDAitHOFWIAiq";
+  mashiro_option.mathjax = "0";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+  var bg = "https://cdn.jsdelivr.net/gh/panpeihui/cdn@1.5/img/cover/xiaoma.jpg,https://cdn.jsdelivr.net/gh/panpeihui/cdn@1.5/img/cover/music.jpg".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('朋友，IE浏览器未适配哦~');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  </style>
+<!-- 1. Add latest jQuery and fancybox files -->
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+</head>
+</html>
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dot">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href>
+          <img src="https://cdn.jsdelivr.net/gh/panpeihui/cdn@1.5/img/cover/touxiang.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>人生没有所谓的彩排  每天都是现场直播</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/panpeihui/cdn@1.2/img/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="http://github.com/" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/panpeihui/cdn@1.5/img/social/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://music.163.com/" target="_blank" class="social-github" title="wangyiyun">
+                    <img src="https://cdn.jsdelivr.net/gh/panpeihui/cdn@1.5/img/social/wangyiyun.png">
+                  </a>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/panpeihui/cdn@1.2/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style>
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name src width="auto" preload="auto">
+    </video>
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <!i class="fa fa-chevron-down" aria-hidden="true">
+      
+    </span>
+  </div>
+
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">あと93❤</span>
+            <span class="shironeko">半歩</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/bangumi/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          番组
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/shijianzhou/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list faa-tada" aria-hidden="true"></i>
+                    时间轴
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="https://panpeihui.github.io/photos/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-photo" aria-hidden="true"></i>
+                    3D图片
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/about/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://user-images.githubusercontent.com/51281888/59606197-1a349200-9143-11e9-9a0c-60b16342d43a.jpg);" src="https://cdn.jsdelivr.net/gh/panpeihui/cdn@1.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://user-images.githubusercontent.com/51281888/59606197-1a349200-9143-11e9-9a0c-60b16342d43a.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      db2安装</h1>
+      <p class="entry-census">
+        <span>
+          <a href>
+            <img src="https://cdn.jsdelivr.net/gh/panpeihui/cdn@1.4/img/cover/touxiang.jpg">
+          </a>
+        </span>
+        <span>
+          <a href>pan</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-4-25<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <p>一.安装准备</p>
+<p>系统版本：CentOS7</p>
+<p>安装包：v9.7fp11_linuxx64_server.tar.gz</p>
+<p>设置语言：export LANG=zh_CN.gbk</p>
+<p>&amp; vim /etc/locale.conf 永久改变</p>
+<pre><code>#LANG=&quot;en_US.UTF-8&quot;
+LANG=&quot;zh_CN.UTF-8&quot;
+</code></pre><p>二.开始安装</p>
+<p>解压包：</p>
+<pre><code>[root@slave-01 tmp]# tar zxfv v9.7fp11_linuxx64_server.tar.gz
+[root@slave-01 tmp]# ll
+总用量 780640
+drwxr-xr-x. 4 root root       161 9月  25 2015 server
+-rw-r--r--. 1 root root 799372868 4月  26 01:02 v9.7fp11_linuxx64_server.tar.gz
+[root@slave-01 tmp]# cd server/
+[root@slave-01 server]# ll
+总用量 56
+drwxr-xr-x.  6 bin bin  182 9月  25 2015 db2
+-r-xr-xr-x.  1 bin bin 5340 9月  25 2015 db2ckupgrade
+-r-xr-xr-x.  1 bin bin 5293 9月  25 2015 db2_deinstall
+-r-xr-xr-x.  1 bin bin 5163 9月  25 2015 db2_install
+-r-xr-xr-x.  1 bin bin 5127 9月  25 2015 db2ls
+-r-xr-xr-x.  1 bin bin 5145 9月  25 2015 db2prereqcheck
+-r-xr-xr-x.  1 bin bin 5145 9月  25 2015 db2setup
+drwxr-xr-x. 15 bin bin  175 9月  25 2015 doc
+-r-xr-xr-x.  1 bin bin 5181 9月  25 2015 installFixPack
+</code></pre><p>检查环境是否支持正常安装</p>
+<pre><code>[root@slave-01 server]# ./db2prereqcheck 
+WARNING:
+DBT3534W  The db2prereqcheck utility determined that ASLR is set to ON and that this could cause issues with some tools.
+WARNING: 
+   The 32-bit library file libpam.so is not found on the system. 
+
+注：第一个告警解决 设置内核信息
+[root@slave-01 server]# echo &quot;kernel.randomize_va_space=0&quot; &gt;&gt;/etc/sysctl.conf 
+[root@slave-01 server]# sysctl -p
+kernel.randomize_va_space = 0
+注：32-bit WARNING可以忽略
+
+再次执行./db2prereqcheck 
+[root@slave-01 server]# ./db2prereqcheck 
+WARNING: 
+   The 32-bit library file libpam.so is not found on the system.
+</code></pre><p>安装</p>
+<pre><code>[root@slave-01 server]# ./db2_install 
+WARNING: 
+   The 32-bit library file libpam.so is not found on the system. 
+
+用于安装产品的缺省目录 － /opt/ibm/db2/V9.7  (默认安装目录)
+
+***********************************************************
+要选择另一个目录用于安装吗？[是/否]
+否
+指定下列其中一个关键字以安装 DB2 产品。
+
+  AESE    高级企业服务器版
+  ESE     企业服务器版
+  CONSV   连接服务器版
+  WSE     工作组服务器版
+  EXP     易携版
+  PE      个人版
+  CLIENT  数据库服务器客户机
+  RTCL    数据库服务器运行时客户机
+
+按“帮助”以重新显示产品名称。
+
+按“退出”以退出。
+
+***********************************************************
+ESE                （这里选择安装企业服务器版ESE）
+WARNING: 
+   The 32-bit library file libpam.so is not found on the system. 
+正在初始化 DB2 安装。
+
+ 要执行的任务总数为：48 
+要执行的所有任务的总估计时间为：2018 
+
+任务 #1 启动
+描述：正在检查许可协议的接受情况 
+估计时间 1 秒 
+任务 #1 结束 
+
+任务 #2 启动
+描述：具备 root 用户特权的情况下进行安装时的基本客户机支持 
+估计时间 3 秒 
+任务 #2 结束 
+
+任务 #3 启动
+描述：DB2 必需的组件。 
+估计时间 10 秒 
+任务 #3 结束 
+
+任务 #4 启动
+描述：产品消息 － 英语 
+估计时间 13 秒 
+任务 #4 结束 
+
+任务 #5 启动
+描述：基本客户机支持 
+估计时间 205 秒 
+任务 #5 结束 
+
+任务 #6 启动
+描述：Java 运行时支持 
+估计时间 126 秒 
+任务 #6 结束 
+
+任务 #7 启动
+描述：Java 帮助（HTML）－ 英语 
+估计时间 7 秒 
+任务 #7 结束 
+
+任务 #8 启动
+描述：具备 root 用户特权的情况下进行安装时的基本服务器支持 
+估计时间 7 秒 
+任务 #8 结束 
+
+任务 #9 启动
+描述：全局安全工具箱 
+估计时间 56 秒 
+任务 #9 结束 
+
+任务 #10 启动
+描述：Java 支持 
+估计时间 12 秒 
+任务 #10 结束 
+
+任务 #11 启动
+描述：SQL 过程 
+估计时间 3 秒 
+任务 #11 结束 
+
+任务 #12 启动
+描述：ICU 实用程序 
+估计时间 40 秒 
+任务 #12 结束 
+
+任务 #13 启动
+描述：Java 公共文件 
+估计时间 20 秒 
+任务 #13 结束 
+
+任务 #14 启动
+描述：基本服务器支持 
+估计时间 262 秒 
+任务 #14 结束 
+
+任务 #15 启动
+描述：IBM Java? 软件开发包（SDK） 
+估计时间 44 秒 
+任务 #15 结束 
+
+任务 #16 启动
+描述：控制中心帮助（HTML）－ 英语 
+估计时间 13 秒 
+任务 #16 结束 
+
+任务 #17 启动
+描述：连接支持 
+估计时间 3 秒 
+任务 #17 结束 
+
+任务 #18 启动
+描述：通信支持 － TCP/IP 
+估计时间 3 秒 
+任务 #18 结束 
+
+任务 #19 启动
+描述：并行扩展 
+估计时间 3 秒 
+任务 #19 结束 
+
+任务 #20 启动
+描述：EnterpriseDB 代码 
+估计时间 3 秒 
+任务 #20 结束 
+
+任务 #21 启动
+描述：复制工具 
+估计时间 21 秒 
+任务 #21 结束 
+
+任务 #22 启动
+描述：公共关系型包装器 
+估计时间 3 秒 
+任务 #22 结束 
+
+任务 #23 启动
+描述：控制中心 
+估计时间 41 秒 
+任务 #23 结束 
+
+任务 #24 启动
+描述：命令行处理器加强版 
+估计时间 6 秒 
+任务 #24 结束 
+
+任务 #25 启动
+描述：DB2 数据源支持 
+估计时间 6 秒 
+任务 #25 结束 
+
+任务 #26 启动
+描述：DB2 LDAP 支持 
+估计时间 4 秒 
+任务 #26 结束 
+
+任务 #27 启动
+描述：“DB2 实例安装”向导 
+估计时间 8 秒 
+任务 #27 结束 
+
+任务 #28 启动
+描述：集成动漫复制支持 
+估计时间 53 秒 
+任务 #28 结束 
+
+任务 #29 启动
+描述：Spatial Extender 客户机 
+估计时间 3 秒 
+任务 #29 结束 
+
+任务 #30 启动
+描述：基本应用程序开发工具 
+估计时间 34 秒 
+任务 #30 结束 
+
+任务 #31 启动
+描述：DB2 更新服务 
+估计时间 4 秒 
+任务 #31 结束 
+
+任务 #32 启动
+描述：第一步 
+估计时间 3 秒 
+任务 #32 结束 
+
+任务 #33 启动
+描述：DB2 企业服务器版的产品特征符 
+估计时间 5 秒 
+任务 #33 结束 
+
+任务 #34 启动
+描述：样本数据库源 
+估计时间 4 秒 
+任务 #34 结束 
+
+任务 #35 启动
+描述：DB2 文本搜索 
+估计时间 70 秒 
+任务 #35 结束 
+
+任务 #36 启动
+描述：Informix 数据源支持 
+估计时间 4 秒 
+任务 #36 结束 
+
+任务 #37 启动
+描述：正在设置 DB2 库路径 
+估计时间 180 秒 
+任务 #37 结束 
+
+任务 #38 启动
+描述：正在安装或更新 SA MP 
+估计时间 40 秒 
+任务 #38 结束 
+
+任务 #39 启动
+描述：正在执行控制任务 
+估计时间 20 秒 
+任务 #39 结束 
+
+任务 #40 启动
+描述：正在更新全局注册表 
+估计时间 20 秒 
+任务 #40 结束 
+
+任务 #41 启动
+描述：正在安装 IBM Tivoli Monitoring for Databases 
+估计时间 600 秒 
+任务 #41 结束 
+
+任务 #42 启动
+描述：正在启动 DB2 故障监视器 
+估计时间 10 秒 
+任务 #42 结束 
+
+任务 #43 启动
+描述：正在更新 db2ls 链接 
+估计时间 1 秒 
+任务 #43 结束 
+
+任务 #44 启动
+描述：正在注册 DB2 许可证 
+估计时间 5 秒 
+任务 #44 结束 
+
+任务 #45 启动
+描述：正在设置缺省全局概要文件注册表变量 
+估计时间 1 秒 
+任务 #45 结束 
+
+任务 #46 启动
+描述：正在初始化实例列表 
+估计时间 5 秒 
+任务 #46 结束 
+
+任务 #47 启动
+描述：正在注册 DB2 更新服务 
+估计时间 30 秒 
+任务 #47 结束 
+
+任务 #48 启动
+描述：正在更新全局概要文件注册表 
+估计时间 3 秒 
+任务 #48 结束 
+
+在此计算机上安装 &quot;DB2 Enterprise Server Edition &quot;
+时发生了较小的错误。某些功能部件可能无法正常工作。
+
+有关更多信息，请参阅 &quot;/tmp/db2_install.log.1552&quot; 上的 DB2
+安装日志。
+</code></pre><p>添加用户组和用户</p>
+<pre><code>[root@slave-01 server]# groupadd -g 801 db2das
+[root@slave-01 server]# groupadd -g 802 db2fenc1
+[root@slave-01 server]# groupadd -g 803 db2inst1
+[root@slave-01 server]# useradd -g 801 -d /home/db2das db2das
+[root@slave-01 server]# useradd -g 802 -d /home/db2fenc1 db2fenc1
+[root@slave-01 server]# useradd -g 803 -d /home/db2inst1 db2inst1
+[root@slave-01 server]# ls /home/
+db2das  db2fenc1  db2inst1
+</code></pre><p>进入安装目录_安装实例 (即Instance)</p>
+<pre><code>[root@slave-01 instance]# pwd
+/opt/ibm/db2/V9.7/instance
+[root@slave-01 instance]# ll
+总用量 1128
+drwxr-xr-x. 4 bin  bin      84 9月  25 2015 common
+-r-xr-xr-x. 1 bin  bin    4945 9月  25 2015 dascrt
+-r-xr-xr-x. 1 bin  bin    3938 9月  25 2015 dasdrop
+-r-xr-xr-x. 1 bin  bin    5795 9月  25 2015 daslist
+-r-xr-xr-x. 1 bin  bin    3915 9月  25 2015 dasmigr
+-r-xr-xr-x. 1 bin  bin    4095 9月  25 2015 dasupdt
+-r-xr-xr-x. 1 bin  bin   24678 9月  25 2015 dasutil
+-r-xr-xr-x. 1 root root  34480 4月  26 02:20 db2chkf
+lrwxrwxrwx. 1 root root     19 9月  25 2015 db2ckmig -&gt; ../bin/db2ckupgrade
+lrwxrwxrwx. 1 root root     19 9月  25 2015 db2ckupgrade -&gt; ../bin/db2ckupgrade
+-r-xr-xr-x. 1 root root  34135 4月  26 02:20 db2clpid
+-rwxr-xr-x. 1 bin  bin    1918 9月  25 2015 db2dbmchk
+lrwxrwxrwx. 1 root root     15 9月  25 2015 db2iauto -&gt; ../bin/db2iauto
+-r-xr-xr-x. 1 root root  34170 4月  26 02:20 db2icknm
+-r-xr-xr-x. 1 root root   8812 9月  25 2015 db2ickts
+-r-xr--r--. 1 root root   8804 9月  25 2015 db2icrt
+-r-xr-xr-x. 1 root root  10107 9月  25 2015 db2idbm
+-r--r--r--. 1 root root  34619 9月  25 2015 db2idefs
+-r-xr--r--. 1 root root   4599 9月  25 2015 db2idrop
+-r-xr--r--. 1 root root   3193 9月  25 2015 db2iexec
+-r-xr-xr-x. 1 root root   4794 9月  25 2015 db2iinfo
+lrwxrwxrwx. 1 root root     15 9月  25 2015 db2ilist -&gt; ../bin/db2ilist
+-r-xr-xr-x. 1 root root   3732 9月  25 2015 db2imchk
+lrwxrwxrwx. 1 root root     11 9月  25 2015 db2imigr -&gt; db2iupgrade
+-r-xr--r--. 1 root root  38896 4月  26 02:20 db2instcfg
+-r-xr--r--. 1 root root  34367 4月  26 02:20 db2ipcld
+-r-xr--r--. 1 root root 303406 4月  26 02:20 db2iset
+-r-xr-xr-x. 1 bin  bin   10638 9月  25 2015 db2isetup
+-r-xr-xr-x. 1 root root  65265 4月  26 02:20 db2isrv
+-r-xr-xr-x. 1 root root  17208 9月  25 2015 db2istop
+-r-xr--r--. 1 root root   3453 9月  25 2015 db2istrt
+-r-xr-xr-x. 1 root root  25808 9月  25 2015 db2iuadm
+-r-xr--r--. 1 root root   7476 9月  25 2015 db2iupdt
+-r-xr--r--. 1 root root  57021 9月  25 2015 db2iupgrade
+-r--r--r--. 1 root root 222867 9月  25 2015 db2iutil
+-r--r--r--. 1 root root    658 9月  25 2015 db2iver
+-rwxr-xr-x. 1 bin  bin    8323 9月  25 2015 db2prechk
+-r-xr--r--. 1 root root   6436 9月  25 2015 db2uit
+-r-xr-xr-x. 1 root root  52063 4月  26 02:20 disp_msg
+drwxr-xr-x. 3 bin  bin      21 9月  25 2015 native
+
+</code></pre><p>安装实例</p>
+<p>创建DAS可以使远程DB2客户机以图形界面的方式连接到数据库服务器</p>
+<pre><code>[root@slave-01 instance]# ./dascrt -u db2das
+SQL4406W  The DB2 Administration Server was started successfully.
+DBI1070I  Program dascrt completed successfully.
+</code></pre><p>使用db2icrt创建实例</p>
+<pre><code>[root@slave-01 instance]# ./db2icrt -u db2inst1 db2inst1
+DBI1070I  Program db2icrt completed successfully.
+</code></pre><p>连接DB2</p>
+<pre><code>(1)切换db2inst1用户
+
+[root@slave-01 instance]# su - db2inst1
+上一次登录：日 4月 26 04:40:47 CST 2020pts/0 上
+
+(2)设置服务器的通信方协议为TCPIP
+
+[db2inst1@slave-01 ~]$ db2set DB2COMM=TCPIP
+
+(3)设置实例的通信服务(对于到操作系统的端口)
+
+[db2inst1@slave-01 ~]$ db2 update dbm cfg using SVCENAME 50000
+DB20000I  The UPDATE DATABASE MANAGER CONFIGURATION command completed 
+successfully.
+
+(4)进入db2命令界面
+
+[db2inst1@slave-01 ~]$ db2
+</code></pre><p>为库文件存放路径授予权限，创建数据库并把库文件存放在指定路径下，该路径需要授权，给用户授予dba权限</p>
+<pre><code>[db2inst1@slave-01 ~]$ exit
+登出
+[root@slave-01 instance]# mkdir /opt/data -p
+[root@slave-01 instance]# chmod -R 777 /opt/data
+[root@slave-01 instance]# su - db2inst1
+上一次登录：日 4月 26 04:49:35 CST 2020pts/0 上
+[db2inst1@slave-01 ~]$ db2start
+04/26/2020 04:53:00     0   0   SQL1063N  DB2START processing was successful.
+SQL1063N  DB2START processing was successful.
+[db2inst1@slave-01 ~]$ db2 create database dbname on /opt/data
+DB20000I  The CREATE DATABASE command completed successfully.
+[db2inst1@slave-01 ~]$ db2 grant dbadm on database to user nio
+DB20000I  The SQL command completed successfully.
+[db2inst1@slave-01 ~]$ passwd db2inst1 设置密码
+</code></pre><p>数据库备份_注意点</p>
+<p>(1)不同的操作系统不兼容需要处理</p>
+<p>(2)指定路径为db2用户下的目录</p>
+<p>​     此为linux下脱机备份 - 需要断开所有连接，并且数据库是开启状态</p>
+<p>列：db2 backup database dyname(数据库名）to 路径 compress(压缩)</p>
+<p>(3)若为root目录下路径，需要有访问权限</p>
+<pre><code>[root@slave-01 instance]# chmod -R 775 /root
+[root@slave-01 instance]# chmod -R 775 /home/db2inst1
+</code></pre><p>数据库备份恢复_注意点</p>
+<p>(1)不能修改备份文件名</p>
+<p>(2)数据库系统用户需要有读写备份文件所在目录的权限</p>
+<p>(3)使用如下格式的命令进行备份恢复</p>
+<p>列：db2 restore db 数据库名 incremental automatic form “备份文件所在路径(不加文件名称)” taken at 备份时间戳(备份文件名中有)</p>
+<p>列：db2 restore db bi incremental automatic form “/home/db2inst1” taken at 202004231620(时间戳)</p>
+<p>连接恢复后的数据库_注音点</p>
+<p>db2的数据库需要在操作系统设置一个同名的用户</p>
+<p>useradd &amp; passwd</p>
+<p>全新数据库设置缓冲池_调优</p>
+<p>防止事物日志已满错误，更改日志大小和数量</p>
+<p>(1)查看db2配置信息</p>
+<pre><code>[db2inst1@slave-01 ~]$ db2 &quot;get db cfg for dbname&quot;
+
+       Database Configuration for Database dbname
+
+ Database configuration release level                    = 0x0d00
+ Database release level                                  = 0x0d00
+
+ Database territory                                      = CN
+ Database code page                                      = 1208
+ Database code set                                       = UTF-8
+ Database country/region code                            = 86
+ Database collating sequence                             = IDENTITY
+ Alternate collating sequence              (ALT_COLLATE) = 
+ Number compatibility                                    = OFF
+ Varchar2 compatibility                                  = OFF
+ Date compatibility                                      = OFF
+ Database page size                                      = 4096
+
+ Dynamic SQL Query management           (DYN_QUERY_MGMT) = DISABLE
+
+ Statement concentrator                      (STMT_CONC) = OFF
+
+ Discovery support for this database       (DISCOVER_DB) = ENABLE
+
+ Restrict access                                         = NO
+ Default query optimization class         (DFT_QUERYOPT) = 5
+ Degree of parallelism                      (DFT_DEGREE) = 1
+ Continue upon arithmetic exceptions   (DFT_SQLMATHWARN) = NO
+ Default refresh age                   (DFT_REFRESH_AGE) = 0
+ Default maintained table types for opt (DFT_MTTB_TYPES) = SYSTEM
+ Number of frequent values retained     (NUM_FREQVALUES) = 10
+ Number of quantiles retained            (NUM_QUANTILES) = 20
+
+ Decimal floating point rounding mode  (DECFLT_ROUNDING) = ROUND_HALF_EVEN
+
+ Backup pending                                          = NO
+
+ All committed transactions have been written to disk    = YES
+ Rollforward pending                                     = NO
+ Restore pending                                         = NO
+
+ Multi-page file allocation enabled                      = YES
+
+ Log retain for recovery status                          = NO
+ User exit for logging status                            = NO
+
+ Self tuning memory                    (SELF_TUNING_MEM) = ON
+ Size of database shared memory (4KB)  (DATABASE_MEMORY) = AUTOMATIC(37140)
+ Database memory threshold               (DB_MEM_THRESH) = 10
+ Max storage for lock list (4KB)              (LOCKLIST) = AUTOMATIC(6200)
+ Percent. of lock lists per application       (MAXLOCKS) = AUTOMATIC(60)
+ Package cache size (4KB)                   (PCKCACHESZ) = AUTOMATIC(1533)
+ Sort heap thres for shared sorts (4KB) (SHEAPTHRES_SHR) = AUTOMATIC(5016)
+ Sort list heap (4KB)                         (SORTHEAP) = AUTOMATIC(256)
+
+ Database heap (4KB)                            (DBHEAP) = AUTOMATIC(2301)
+ Catalog cache size (4KB)              (CATALOGCACHE_SZ) = 300
+ Log buffer size (4KB)                        (LOGBUFSZ) = 256
+ Utilities heap size (4KB)                (UTIL_HEAP_SZ) = 5000
+ Buffer pool size (pages)                     (BUFFPAGE) = 1000
+ SQL statement heap (4KB)                     (STMTHEAP) = AUTOMATIC(8192)
+ Default application heap (4KB)             (APPLHEAPSZ) = AUTOMATIC(256)
+ Application Memory Size (4KB)             (APPL_MEMORY) = AUTOMATIC(40000)
+ Statistics heap size (4KB)               (STAT_HEAP_SZ) = AUTOMATIC(4384)
+
+ Interval for checking deadlock (ms)         (DLCHKTIME) = 10000
+ Lock timeout (sec)                        (LOCKTIMEOUT) = -1
+
+ Changed pages threshold                (CHNGPGS_THRESH) = 80
+ Number of asynchronous page cleaners   (NUM_IOCLEANERS) = AUTOMATIC(1)
+ Number of I/O servers                   (NUM_IOSERVERS) = AUTOMATIC(3)
+ Index sort flag                             (INDEXSORT) = YES
+ Sequential detect flag                      (SEQDETECT) = YES
+ Default prefetch size (pages)         (DFT_PREFETCH_SZ) = AUTOMATIC
+
+ Track modified pages                         (TRACKMOD) = NO
+
+ Default number of containers                            = 1
+ Default tablespace extentsize (pages)   (DFT_EXTENT_SZ) = 32
+
+ Max number of active applications            (MAXAPPLS) = AUTOMATIC(40)
+ Average number of active applications       (AVG_APPLS) = AUTOMATIC(1)
+ Max DB files open per application            (MAXFILOP) = 61440
+
+ Log file size (4KB)                         (LOGFILSIZ) = 1024     --日志文件大小
+ Number of primary log files                (LOGPRIMARY) = 13  --主日志文件个数
+ Number of secondary log files               (LOGSECOND) = 4  --辅日志文件个数
+ Changed path to log files                  (NEWLOGPATH) = 
+ Path to log files                                       = /opt/data/db2inst1/NODE0000/SQL00001/SQLOGDIR/
+ Overflow log path                     (OVERFLOWLOGPATH) = 
+ Mirror log path                         (MIRRORLOGPATH) = 
+ First active log file                                   = 
+ Block log on disk full                (BLK_LOG_DSK_FUL) = NO
+ Block non logged operations            (BLOCKNONLOGGED) = NO
+ Percent max primary log space by transaction  (MAX_LOG) = 0
+ Num. of active log files for 1 active UOW(NUM_LOG_SPAN) = 0
+
+ Group commit count                          (MINCOMMIT) = 1
+ Percent log file reclaimed before soft chckpt (SOFTMAX) = 520
+ Log retain for recovery enabled             (LOGRETAIN) = OFF
+ User exit for logging enabled                (USEREXIT) = OFF
+
+ HADR database role                                      = STANDARD
+ HADR local host name                  (HADR_LOCAL_HOST) = 
+ HADR local service name                (HADR_LOCAL_SVC) = 
+ HADR remote host name                (HADR_REMOTE_HOST) = 
+ HADR remote service name              (HADR_REMOTE_SVC) = 
+ HADR instance name of remote server  (HADR_REMOTE_INST) = 
+ HADR timeout value                       (HADR_TIMEOUT) = 120
+ HADR log write synchronization mode     (HADR_SYNCMODE) = NEARSYNC
+ HADR peer window duration (seconds)  (HADR_PEER_WINDOW) = 0
+
+ First log archive method                 (LOGARCHMETH1) = OFF
+ Options for logarchmeth1                  (LOGARCHOPT1) = 
+ Second log archive method                (LOGARCHMETH2) = OFF
+ Options for logarchmeth2                  (LOGARCHOPT2) = 
+ Failover log archive path                (FAILARCHPATH) = 
+ Number of log archive retries on error   (NUMARCHRETRY) = 5
+ Log archive retry Delay (secs)         (ARCHRETRYDELAY) = 20
+ Vendor options                              (VENDOROPT) = 
+
+ Auto restart enabled                      (AUTORESTART) = ON
+ Index re-creation time and redo index build  (INDEXREC) = SYSTEM (RESTART)
+ Log pages during index build            (LOGINDEXBUILD) = OFF
+ Default number of loadrec sessions    (DFT_LOADREC_SES) = 1
+ Number of database backups to retain   (NUM_DB_BACKUPS) = 12
+ Recovery history retention (days)     (REC_HIS_RETENTN) = 366
+ Auto deletion of recovery objects    (AUTO_DEL_REC_OBJ) = OFF
+
+ TSM management class                    (TSM_MGMTCLASS) = 
+ TSM node name                            (TSM_NODENAME) = 
+ TSM owner                                   (TSM_OWNER) = 
+ TSM password                             (TSM_PASSWORD) = 
+
+ Automatic maintenance                      (AUTO_MAINT) = ON
+   Automatic database backup            (AUTO_DB_BACKUP) = OFF
+   Automatic table maintenance          (AUTO_TBL_MAINT) = ON
+     Automatic runstats                  (AUTO_RUNSTATS) = ON
+       Automatic statement statistics  (AUTO_STMT_STATS) = ON
+     Automatic statistics profiling    (AUTO_STATS_PROF) = OFF
+       Automatic profile updates         (AUTO_PROF_UPD) = OFF
+     Automatic reorganization               (AUTO_REORG) = OFF
+
+ Auto-Revalidation                          (AUTO_REVAL) = DEFERRED
+ Currently Committed                        (CUR_COMMIT) = ON
+ CHAR output with DECIMAL input        (DEC_TO_CHAR_FMT) = NEW
+ Enable XML Character operations        (ENABLE_XMLCHAR) = YES
+ WLM Collection Interval (minutes)     (WLM_COLLECT_INT) = 0
+ Monitor Collect Settings
+ Request metrics                       (MON_REQ_METRICS) = BASE
+ Activity metrics                      (MON_ACT_METRICS) = BASE
+ Object metrics                        (MON_OBJ_METRICS) = BASE
+ Unit of work events                      (MON_UOW_DATA) = NONE
+ Lock timeout events                   (MON_LOCKTIMEOUT) = NONE
+ Deadlock events                          (MON_DEADLOCK) = WITHOUT_HIST
+ Lock wait events                         (MON_LOCKWAIT) = NONE
+ Lock wait event threshold               (MON_LW_THRESH) = 5000000
+ Number of package list entries         (MON_PKGLIST_SZ) = 32
+ Lock event notification level         (MON_LCK_MSG_LVL) = 1
+
+ SMTP Server                               (SMTP_SERVER) = 
+ SQL conditional compilation flags         (SQL_CCFLAGS) = 
+ Section actuals setting               (SECTION_ACTUALS) = NONE
+ Connect procedure                        (CONNECT_PROC) = 
+</code></pre><p>(2)修改日志命令</p>
+<pre><code>[db2inst1@slave-01 ~]$ db2 connect to dbname
+[db2inst1@slave-01 ~]$ db2 update db cfg using LOGSECOND 200
+DB20000I  The UPDATE DATABASE CONFIGURATION command completed successfully.
+[db2inst1@slave-01 ~]$ db2 update db cfg using LOGPRIMARY 40
+DB20000I  The UPDATE DATABASE CONFIGURATION command completed successfully.
+SQL1363W  One or more of the parameters submitted for immediate modification 
+were not changed dynamically. For these configuration parameters, the database 
+must be shutdown and reactivated before the configuration parameter changes 
+become effective.
+[db2inst1@slave-01 ~]$ db2 UPDATE DB CFG  USING LOGFILSIZ 122800
+DB20000I  The UPDATE DATABASE CONFIGURATION command completed successfully.
+SQL1363W  One or more of the parameters submitted for immediate modification 
+were not changed dynamically. For these configuration parameters, the database 
+must be shutdown and reactivated before the configuration parameter changes 
+become effective.
+
+修改完成后查看
+[db2inst1@slave-01 ~]$ db2 get db cfg for dbname|grep LOG
+ Catalog cache size (4KB)              (CATALOGCACHE_SZ) = 300
+ Log buffer size (4KB)                        (LOGBUFSZ) = 256
+ Log file size (4KB)                         (LOGFILSIZ) = 122800
+ Number of primary log files                (LOGPRIMARY) = 40
+ Number of secondary log files               (LOGSECOND) = 200
+ Changed path to log files                  (NEWLOGPATH) = 
+ Path to log files                                       = /opt/data/db2inst1/NODE0000/SQL00001/SQLOGDIR/
+ Overflow log path                     (OVERFLOWLOGPATH) = 
+ Mirror log path                         (MIRRORLOGPATH) = 
+ Block log on disk full                (BLK_LOG_DSK_FUL) = NO
+ Block non logged operations            (BLOCKNONLOGGED) = NO
+ Percent max primary log space by transaction  (MAX_LOG) = 0
+ Num. of active log files for 1 active UOW(NUM_LOG_SPAN) = 0
+ Log retain for recovery enabled             (LOGRETAIN) = OFF
+ First log archive method                 (LOGARCHMETH1) = OFF
+ Options for logarchmeth1                  (LOGARCHOPT1) = 
+ Second log archive method                (LOGARCHMETH2) = OFF
+ Options for logarchmeth2                  (LOGARCHOPT2) = 
+ Log pages during index build            (LOGINDEXBUILD) = OFF
+</code></pre><p>(3)修改日志重启数据库</p>
+<pre><code>[db2inst1@slave-01 ~]$ db2stop force
+2020-04-26 05:53:38     0   0   SQL1064N  DB2STOP processing was successful.
+SQL1064N  DB2STOP processing was successful.
+[db2inst1@slave-01 ~]$ db2start
+04/26/2020 05:53:59     0   0   SQL1063N  DB2START processing was successful.
+SQL1063N  DB2START processing was successful.
+</code></pre>
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏<div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/panpeihui/cdn@1.5/img/custom/avatar.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/panpeihui/cdn@1.5/img/custom/avatar.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!--<div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>-->
+        <!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2020/04/23/expect/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/panpeihui/cdn@1.2/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://user-images.githubusercontent.com/51281888/59606197-1a349200-9143-11e9-9a0c-60b16342d43a.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                expect</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "yhbqo3WQVL8v8idfcIiafFxV-gzGzoHsz",
+        appKey: "db39sRhT25DFDAitHOFWIAiq",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <a href class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/panpeihui/cdn@1.4/img/cover/touxiang.jpg" itemprop="image" alt="pan" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href itemprop="url" rel="author">pan</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>最美的不是下雨天，而是我与你一起躲过雨的屋檐</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
+    </div>    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!--<footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 pan<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>-->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/panpeihui/cdn@1.2/img/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/panpeihui/cdn@1.2/img/other/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy 2019</p>
+    </div>
+<!--    <div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #733a3a;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank" style="color: #f5f5f5;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" target="_blank" style="color: #f5f5f5;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a href="https://www.hojun.cn/" target="_blank" style="color: #f5f5f5;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun</a>, Powered by Hexo, Hosted by Coding Pages</a>
+        </span>
+      </p>
+</span>
+</div>-->
+    </div>
+  <!-- .site-info -->
+<div style="text-align:center;">
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("06/14/2019 00:00:00");//在此处修改你的建站时间
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = " 本博客已于第 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + "秒 倒闭";
+    }
+  setInterval("createtime()",250);
+</script>
+<div style="text-align:center;">
+      <div class="github-badge">
+        <a rel="license" href="https://hexo.io/" target="_blank" title="由Hexo强力驱动">
+        <span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a>
+      </div>
+      <div class="github-badge">
+        <a rel="license" href="https://github.io/" target="_blank" title="静态网页托管于Github">
+        <span class="badge-subject">Hosted</span><span class="badge-value bg-brightgreen">Github</span></a>
+      </div>
+      <div class="github-badge">
+          <a rel="license" href="https://sm.ms/" target="_blank" title="SM.MS提供图床服务">
+          <span class="badge-subject">PictureBed</span><span class="badge-value bg-blueviolet">Github&SM</span></a>
+      </div>
+      <div class="github-badge">
+          <a rel="license" href="https://github.com/honjun/hexo-theme-sakura/" target="_blank" title="站点使用 Sakura 主题，作者：Mashiro & Hojun">
+          <span class="badge-subject">Theme</span><span class="badge-value bg-blue">Sakura</span></a>
+      </div>
+      <div class="github-badge">
+          <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="本站点采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议进行许可">
+          <span class="badge-subject"><i class="fa fa-copyright"></i></span><span class="badge-value bg-lightgrey">BY-NC-SA 4.0</span></a>
+      </div>
+      <div class="github-badge">
+        <span class="badge-subject">UV</span><span class="badge-value bg-orange" id="busuanzi_value_site_uv"></span>
+      </div>
+      <div class="github-badge">
+        <span class="badge-subject">PV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_pv"></span>
+      </div><br><br>
+
+<style>
+.github-badge {
+display: inline-block;
+border-radius: 4px;
+text-shadow: none;
+font-size: 12px;
+color: #fff;
+line-height: 12px;
+background-color: #ABBAC3;
+margin-bottom: 5px;
+}
+.github-badge .badge-subject {
+  display: inline-block;
+  background-color: #4D4D4D;
+  padding: 4px 4px 4px 6px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  color:#fff;
+}
+.github-badge .badge-value {
+  display: inline-block;
+  padding: 4px 6px 4px 4px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  color:#fff;
+}
+.github-badge .bg-brightgreen {
+  background-color: #4DC820 !important;
+}
+.github-badge .bg-orange {
+  background-color: #FFA500 !important;
+}
+.github-badge .bg-yellow {
+  background-color: #D8B024 !important;
+}
+.github-badge .bg-blueviolet {
+  background-color: #8833D7 !important;
+}
+.github-badge .bg-pink {
+  background-color: #F26BAE !important;
+}
+.github-badge .bg-red {
+  background-color: #e05d44 !important;
+}
+.github-badge .bg-blue {
+  background-color: #007EC6 !important;
+}
+.github-badge .bg-lightgrey {
+  background-color: #9F9F9F !important;
+}
+.github-badge .bg-grey,
+.github-badge .bg-gray {
+  background-color: #555 !important;
+}
+.github-badge .bg-lightgrey,
+.github-badge .bg-lightgray {
+  background-color: #9f9f9f !important;
+}
+</style>
+</div>
+</div></footer>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script type="text/javascript" src="/js/Valine.min.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+/* <![CDATA[ */
+if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+} else {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+}
+/* ]]> */
+
+</script>
+<script>
+$(document).ready(function() {
+  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+    if ($(".pattern-center").length > 0) { //有图的情况
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+      });
+    } else {
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+      });
+    }
+    var offsetTop = $('.toc').offset().top - 95;
+    window.onscroll = function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= offsetTop) {
+        $('.toc').addClass('toc-fixed');
+      } else {
+        $('.toc').removeClass('toc-fixed');
+      }
+    }
+  }
+});
+</script>
+<script src="/live2d-widget/autoload.js"></script>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/love.js"></script>
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <div id="mo-nav" class>
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/panpeihui/cdn@1.5/img/cover/touxiang.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">あと93❤半歩</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="http://github.com/" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+        <a href="http://weibo.com/mashirozx?is_all=1" class="fa fa-weibo" target="_blank" style="color: #dd4b39; margin-left:20px"></a>
+      
+        <a href="https://wpa.qq.com/msgrd?v=3&uin=954655431&site=qq&menu=yes" class="fa fa-qq" target="_blank" style="color: #25c6fe; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/bangumi/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  番组
+                </a>
+              </li>
+            
+              <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  歌单
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/shijianzhou/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list faa-tada" aria-hidden="true"></i>
+            时间轴
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="https://panpeihui.github.io/photos/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-photo" aria-hidden="true"></i>
+            3D图片
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/links/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+            友人帐
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/about/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+            关于
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<div class="aplayer" data-id="2879787433" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="false" data-loop="all" data-order="random" data-preload="auto" data-volume="0.7" data-mutex="true" < div>
+<script src="https://cdn.jsdelivr.net/npm/meting@1.2/dist/Meting.min.js"></script>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script></div>
+  <div class="bg_content">
+    <canvas id="canvas"></canvas>
+</div>
+<!--网页预加载-->
+<script src="https://cdn.jsdelivr.net/gh/panpeihui/cdn@1.2/js/instantclick-1.2.2.js" type="module"></script>
+<!--浏览器搞笑标题-->
+<script type="text/javascript" src="\js\FunnyTitle.js"></script>
+</body>
+</html>

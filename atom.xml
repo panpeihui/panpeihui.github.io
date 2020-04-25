@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>還差半步</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="/"/>
+  <updated>2020-04-25T14:13:51.512Z</updated>
+  <id>/</id>
+  
+  <author>
+    <name>pan</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>db2安装</title>
+    <link href="/2020/04/25/db2/"/>
+    <id>/2020/04/25/db2/</id>
+    <published>2020-04-25T08:53:47.000Z</published>
+    <updated>2020-04-25T14:13:51.512Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="web" scheme="/tags/web/"/>
+    
+      <category term="悦读" scheme="/tags/%E6%82%A6%E8%AF%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>expect</title>
+    <link href="/2020/04/23/expect/"/>
+    <id>/2020/04/23/expect/</id>
+    <published>2020-04-23T13:31:07.000Z</published>
+    <updated>2020-04-23T14:21:13.926Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="web" scheme="/tags/web/"/>
+    
+      <category term="悦读" scheme="/tags/%E6%82%A6%E8%AF%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>冰雪奇缘2</title>
+    <link href="/2019/12/08/%E5%86%B0%E9%9B%AA%E5%A5%87%E7%BC%982/"/>
+    <id>/2019/12/08/冰雪奇缘2/</id>
+    <published>2019-12-08T09:19:44.000Z</published>
+    <updated>2019-12-08T14:10:02.000Z</updated>
+    
+    <summary type="html">
+    
+      冰雪奇缘2是由詹妮弗·李导演,克里斯汀·贝尔,伊迪娜·门泽尔,乔纳森·格罗夫等主演的喜剧,冒险,动画电影
+    
+    </summary>
+    
+      <category term="电影" scheme="/categories/%E7%94%B5%E5%BD%B1/"/>
+    
+    
+      <category term="web" scheme="/tags/web/"/>
+    
+      <category term="悦读" scheme="/tags/%E6%82%A6%E8%AF%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>linux进程管理命令</title>
+    <link href="/2019/10/31/linux%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4-1/"/>
+    <id>/2019/10/31/linux进程管理命令-1/</id>
+    <published>2019-10-31T07:04:25.000Z</published>
+    <updated>2019-10-31T07:04:51.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="web" scheme="/tags/web/"/>
+    
+      <category term="悦读" scheme="/tags/%E6%82%A6%E8%AF%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CentOS7+编译安装Lnmp+Zabbix+Goaccess</title>
+    <link href="/2019/09/30/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85LNMP+Zabbix+Goaccess/"/>
+    <id>/2019/09/30/编译安装LNMP+Zabbix+Goaccess/</id>
+    <published>2019-09-30T11:27:58.000Z</published>
+    <updated>2019-10-08T10:30:23.000Z</updated>
+    
+    <summary type="html">
+    
+      Lnmp+Zabbix+Goaccess
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="linux" scheme="/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>编译安装MYSQL</title>
+    <link href="/2019/09/21/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85MYSQL/"/>
+    <id>/2019/09/21/编译安装MYSQL/</id>
+    <published>2019-09-21T01:19:06.000Z</published>
+    <updated>2019-09-24T15:26:41.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="web" scheme="/tags/web/"/>
+    
+      <category term="悦读" scheme="/tags/%E6%82%A6%E8%AF%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>nginx-vim小技巧</title>
+    <link href="/2019/09/02/nginx-vim%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
+    <id>/2019/09/02/nginx-vim小技巧/</id>
+    <published>2019-09-02T13:43:39.000Z</published>
+    <updated>2019-09-02T13:46:25.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="web" scheme="/tags/web/"/>
+    
+      <category term="悦读" scheme="/tags/%E6%82%A6%E8%AF%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo-d bug</title>
+    <link href="/2019/08/31/hexo-d-Duge/"/>
+    <id>/2019/08/31/hexo-d-Duge/</id>
+    <published>2019-08-31T13:32:19.000Z</published>
+    <updated>2019-08-31T13:44:23.000Z</updated>
+    
+    <summary type="html">
+    
+      hexo -d 报错之一，同步不了远程代码仓库
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="web" scheme="/tags/web/"/>
+    
+      <category term="悦读" scheme="/tags/%E6%82%A6%E8%AF%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>yum仓库小知识</title>
+    <link href="/2019/07/28/yum1/"/>
+    <id>/2019/07/28/yum1/</id>
+    <published>2019-07-28T11:27:58.000Z</published>
+    <updated>2019-07-28T13:36:22.000Z</updated>
+    
+    <summary type="html">
+    
+      自动搭建yum本地仓库
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="linux" scheme="/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>碎碎</title>
+    <link href="/2019/07/26/%E7%A2%8E%E7%A2%8E/"/>
+    <id>/2019/07/26/碎碎/</id>
+    <published>2019-07-26T14:08:40.000Z</published>
+    <updated>2019-07-28T07:15:30.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>nginx基础</title>
+    <link href="/2019/07/22/nginx/"/>
+    <id>/2019/07/22/nginx/</id>
+    <published>2019-07-22T03:10:56.000Z</published>
+    <updated>2019-09-28T13:08:51.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="linux" scheme="/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>起风了</title>
+    <link href="/2019/07/20/%E8%B5%B7%E9%A3%8E%E4%BA%86/"/>
+    <id>/2019/07/20/起风了/</id>
+    <published>2019-07-20T15:21:20.000Z</published>
+    <updated>2019-07-27T03:49:18.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="碎碎念念" scheme="/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5%E5%BF%B5/"/>
+    
+    
+      <category term="心情语录" scheme="/tags/%E5%BF%83%E6%83%85%E8%AF%AD%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Markdown用法</title>
+    <link href="/2019/07/12/Markdown/"/>
+    <id>/2019/07/12/Markdown/</id>
+    <published>2019-07-12T03:50:43.000Z</published>
+    <updated>2019-07-19T08:47:06.000Z</updated>
+    
+    <summary type="html">
+    
+      Markdown的语法简洁明了、学习容易，而且功能比纯文本更强，因此有很多人用它写博客
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="Markdown" scheme="/tags/Markdown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OSI</title>
+    <link href="/2019/07/06/OSI-7%E5%B1%82/"/>
+    <id>/2019/07/06/OSI-7层/</id>
+    <published>2019-07-06T08:03:14.000Z</published>
+    <updated>2019-07-19T08:49:14.000Z</updated>
+    
+    <summary type="html">
+    
+      应用层 表示层 会话层 传输层 网络层 数据链路层 物理层
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="linux" scheme="/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>用户权限</title>
+    <link href="/2019/07/06/%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/"/>
+    <id>/2019/07/06/用户权限/</id>
+    <published>2019-07-06T07:58:04.000Z</published>
+    <updated>2019-07-19T08:53:56.000Z</updated>
+    
+    <summary type="html">
+    
+      linux 多任务、多用户操作系统，实现多用户可以从多个终端登陆，进行自己的操作。每个用户都有自己的对特定文件的权限，互不干扰。
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="linux" scheme="/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>cobbler</title>
+    <link href="/2019/07/02/cobbler/"/>
+    <id>/2019/07/02/cobbler/</id>
+    <published>2019-07-02T14:46:12.000Z</published>
+    <updated>2019-07-19T08:44:00.000Z</updated>
+    
+    <summary type="html">
+    
+      obbler是一个Linux服务器安装的服务通过网络启动的方式来快速安装、重 装物理服务器和虚拟机同时还可以管理 DHCP，DNS等C
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="linux" scheme="/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux分区</title>
+    <link href="/2019/07/01/%E5%88%86%E5%8C%BA/"/>
+    <id>/2019/07/01/分区/</id>
+    <published>2019-07-01T12:39:00.000Z</published>
+    <updated>2019-07-19T08:53:20.000Z</updated>
+    
+    <summary type="html">
+    
+      linux磁盘分区主要分为基本分区（primary partion）和扩充分区(extension partion)两种
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="linux" scheme="/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ssh</title>
+    <link href="/2019/07/01/ssh/"/>
+    <id>/2019/07/01/ssh/</id>
+    <published>2019-07-01T09:45:07.000Z</published>
+    <updated>2019-07-19T08:50:58.000Z</updated>
+    
+    <summary type="html">
+    
+      可以代替Telnet，又可以为FTP、PoP、甚至为PPP提供一个安全的&quot;通道&quot;.使用SSH，你可以把所有传输的数据进行加密
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="linux" scheme="/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux系统初始优化</title>
+    <link href="/2019/06/24/%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E5%8C%96/"/>
+    <id>/2019/06/24/系统初始化/</id>
+    <published>2019-06-24T11:21:02.000Z</published>
+    <updated>2019-07-19T08:54:22.000Z</updated>
+    
+    <summary type="html">
+    
+      装机后，需要进行系统初步的优化，优化后的系统就会显得好用轻快很多
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="linux" scheme="/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>nfs存储</title>
+    <link href="/2019/06/24/nfs/"/>
+    <id>/2019/06/24/nfs/</id>
+    <published>2019-06-24T06:45:33.000Z</published>
+    <updated>2019-07-19T08:48:48.000Z</updated>
+    
+    <summary type="html">
+    
+      通过网络，让不同的机器、不同的操作系统可以共享彼此的文件，将网络中的NFS服务器共享的目录挂载到本地端的文件系统中
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="linux" scheme="/tags/linux/"/>
+    
+  </entry>
+  
+</feed>
